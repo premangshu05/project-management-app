@@ -1,6 +1,6 @@
 // Central API helper — automatically attaches JWT token to every request
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://project-management-backend-c44l.onrender.com/api";
 
 const getToken = () => localStorage.getItem("projexis_token");
 
