@@ -478,10 +478,12 @@ export const AppProvider = ({ children }) => {
 
   const deleteTeamMember = async (memberId) => {
     try {
+      console.log("AppContext: Deleting member ID:", memberId);
       await deleteTeamMemberApi(memberId);
       setTeamMembers((prev) => prev.filter((m) => m.id !== memberId));
+      console.log("AppContext: Deletion successful for:", memberId);
     } catch (err) {
-      console.error("Failed to delete team member:", err.message);
+      console.error("AppContext: Failed to delete team member:", err.message);
       throw err;
     }
   };

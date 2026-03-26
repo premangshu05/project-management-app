@@ -13,6 +13,7 @@ const Team = () => {
     const [showModal, setShowModal] = useState(false);
     const [editingMember, setEditingMember] = useState(null);
     const [selectedMember, setSelectedMember] = useState(null);
+    const [confirmDelete, setConfirmDelete] = useState(null); // Just the ID of the member to delete
     const [toast, setToast] = useState(null); // { type: 'success'|'warning', message: string }
 
     // Auto-dismiss toast after 5 seconds
@@ -55,11 +56,22 @@ const Team = () => {
     };
 
     const handleDeleteMember = async (member) => {
-        if (!window.confirm(`Are you sure you want to remove ${member.name} from the team?`)) return;
+        console.log("Team.jsx: Initiating deletion for member:", member.id);
+        setConfirmDelete(member);
+    };
+
+    const confirmDeleteMember = async () => {
+        if (!confirmDelete) return;
+        const member = confirmDelete;
         try {
+            console.log("Team.jsx: Confirming deletion for:", member.id);
             await deleteTeamMember(member.id);
+            setToast({ type: 'success', message: `${member.name} removed from the team.` });
         } catch (err) {
+            console.error("Team.jsx: Deletion error:", err);
             setToast({ type: 'warning', message: `Could not remove member: ${err.message}` });
+        } finally {
+            setConfirmDelete(null);
         }
     };
 
@@ -277,6 +289,24 @@ const Team = () => {
                         member={selectedMember?.member}
                         projects={selectedMember?.projects || []}
                     />
+
+                    {/* Custom Deletion Confirmation Modal */}
+                    {confirmDelete && (
+                        <div className="modal-overlay" style={{ zIndex: 10001 }}>
+                            <div className="glass-card modal-container animate-fade-in-up" style={{ maxWidth: '400px' }}>
+                                <div className="modal-header">
+                                    <h2 className="text-xl font-bold">Remove Member?</h2>
+                                </div>
+                                <p className="text-secondary" style={{ marginBottom: '1.5rem' }}>
+                                    Are you sure you want to remove <strong>{confirmDelete.name}</strong> from the team? This action cannot be undone.
+                                </p>
+                                <div className="modal-actions">
+                                    <button className="btn btn-secondary" onClick={() => setConfirmDelete(null)}>Cancel</button>
+                                    <button className="btn btn-primary" style={{ background: 'var(--color-priority-critical)' }} onClick={confirmDeleteMember}>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
