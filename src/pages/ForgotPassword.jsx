@@ -32,7 +32,7 @@ const ForgotPassword = () => {
                 {/* Logo */}
                 <div className="login-header">
                     <div className="login-logo">
-                        <span className="login-logo-letter">P</span>
+                        <img src="/favicon.png" alt="P" className="login-logo-image" />
                     </div>
                     <h1 className="gradient-text login-title">Forgot Password</h1>
                     <p className="text-secondary">

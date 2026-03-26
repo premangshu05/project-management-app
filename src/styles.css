@@ -1381,19 +1381,20 @@ select:focus {
     width: 84px;
     height: 84px;
     margin: 0 auto 1.5rem;
-    background: var(--gradient-accent);
+    background: transparent;
     border-radius: var(--radius-2xl);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-glow), 0 0 60px rgba(0, 212, 255, 0.2);
     animation: float 4s ease-in-out infinite;
+    overflow: hidden;
 }
 
-.login-logo-letter {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
+.login-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .login-title {

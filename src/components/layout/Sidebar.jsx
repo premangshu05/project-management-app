@@ -43,7 +43,7 @@ const Sidebar = () => {
                 {!sidebarCollapsed && (
                     <div className="sidebar-logo">
                         <div className="sidebar-logo-icon">
-                            <span>P</span>
+                            <img src="/favicon.png" alt="P" className="sidebar-logo-image" />
                         </div>
                         <div className="sidebar-logo-text">
                             <h1 className="gradient-text">ProzexiS</h1>
@@ -53,7 +53,7 @@ const Sidebar = () => {
                 )}
                 {sidebarCollapsed && (
                     <div className="sidebar-logo-icon" style={{ margin: '0 auto' }}>
-                        <span>P</span>
+                        <img src="/favicon.png" alt="P" className="sidebar-logo-image" />
                     </div>
                 )}
             </div>

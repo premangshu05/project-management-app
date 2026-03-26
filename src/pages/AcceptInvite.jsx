@@ -51,8 +51,7 @@ const AcceptInvite = () => {
                 {/* Header */}
                 <div className="login-header">
                     <div className="login-logo">
-                        <span className="login-logo-icon">⬡</span>
-                        <span className="login-logo-text">Projexis</span>
+                        <img src="/favicon.png" alt="P" className="login-logo-image" />
                     </div>
                     <h1 className="login-title">Accept Your Invitation</h1>
                     <p className="login-subtitle">

@@ -52,7 +52,7 @@ const Register = () => {
                 {/* Header */}
                 <div className="login-header">
                     <div className="login-logo">
-                        <span className="login-logo-letter">P</span>
+                        <img src="/favicon.png" alt="P" className="login-logo-image" />
                     </div>
                     <h1 className="gradient-text login-title">Create Account</h1>
                     <p className="text-secondary">Join Projexis and manage your projects</p>
